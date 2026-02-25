@@ -1,0 +1,386 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Fallende Herzen - Layer 1 */
+.background-gradient::before {
+    content: '❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    font-size: 2em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    animation: heartFall 25s linear infinite;
+    opacity: 0.3;
+}
+
+/* Fallende Herzen - Layer 2 */
+.background-gradient::after {
+    content: '❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️ 💜 ❤️';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    font-size: 1.5em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    animation: heartFall2 30s linear infinite;
+    opacity: 0.2;
+    left: 100px;
+}
+
+@keyframes heartFall {
+    0% {
+        transform: translateY(-100%) translateX(0);
+        opacity: 0.3;
+    }
+    10% {
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+@keyframes heartFall2 {
+    0% {
+        transform: translateY(-100%) translateX(0) rotate(0deg);
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        transform: translateY(100vh) translateX(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.timer-card {
+    background: linear-gradient(135deg, #667eea15, #764ba215);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.timer-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.timer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+    border-color: rgba(102, 126, 234, 0.6);
+}
+
+.timer-card.elapsed {
+    background: linear-gradient(135deg, #ffa50015, #ff605015);
+    border-color: rgba(255, 160, 122, 0.3);
+}
+
+.timer-card.elapsed:hover {
+    border-color: rgba(255, 160, 122, 0.6);
+    box-shadow: 0 15px 40px rgba(255, 160, 122, 0.4);
+}
+
+.timer-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.timer-type {
+    font-size: 0.85em;
+    color: #999;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.timer-display {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.time-unit {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 15px 12px;
+    border-radius: 10px;
+    min-width: 50px;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.time-label {
+    font-size: 0.7em;
+    color: #999;
+    margin-top: 5px;
+}
+
+.timer-date {
+    font-size: 0.9em;
+    color: #999;
+    margin-top: 15px;
+}
+
+.timer-button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.timer-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.timer-button:active {
+    transform: scale(0.98);
+}
+
+/* Geheime Nachricht Button - unter den Countdowns */
+.birthday-button {
+    display: block;
+    margin: 30px auto 0;
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.birthday-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.birthday-button:active {
+    transform: translateY(0);
+}
+
+/* SECRET Timer - klein und unauffällig */
+.secret-timer {
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.secret-timer:hover {
+    opacity: 0.8;
+}
+
+.secret-label {
+    font-size: 0.8em;
+    color: #999;
+    margin-bottom: 8px;
+}
+
+.secret-display {
+    font-size: 1.2em;
+    color: #999;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+/* Secret Card Styling */
+.timer-card.secret {
+    background: linear-gradient(135deg, #2a2a2a15, #3a3a3a15);
+    border-color: rgba(200, 100, 200, 0.3);
+}
+
+.timer-card.secret:hover {
+    border-color: rgba(200, 100, 200, 0.6);
+    box-shadow: 0 15px 40px rgba(200, 100, 200, 0.3);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    color: #667eea;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: translateX(-5px);
+}
+
+.modal-text {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+    text-align: center;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    .timer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timer-display {
+        gap: 5px;
+    }
+
+    .time-unit {
+        min-width: 45px;
+        padding: 12px 10px;
+        font-size: 1.1em;
+    }
+}

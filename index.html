@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsere besonderen Momente</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <div class="container">
+        <h1>Unsere besonderen Momente</h1>
+        
+        <div class="timer-grid">
+            <!-- Geburtstag -->
+            <div class="timer-card countdown">
+                <div class="timer-type">⏱ Countdown</div>
+                <div class="timer-name">Dein nächster Geburtstag</div>
+                <div class="timer-display">
+                    <div>
+                        <div class="time-unit" id="birthday-days">00</div>
+                        <div class="time-label">Tage</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="birthday-hours">00</div>
+                        <div class="time-label">Stunden</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="birthday-minutes">00</div>
+                        <div class="time-label">Minuten</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="birthday-seconds">00</div>
+                        <div class="time-label">Sekunden</div>
+                    </div>
+                </div>
+                <div class="timer-date">25. Februar 2027</div>
+            </div>
+
+            <!-- Seit Begegnung -->
+            <div class="timer-card elapsed">
+                <div class="timer-type">⏰ Seit</div>
+                <div class="timer-name">Wir kennen uns seit</div>
+                <div class="timer-display">
+                    <div>
+                        <div class="time-unit" id="meeting-days">00</div>
+                        <div class="time-label">Tage</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="meeting-hours">00</div>
+                        <div class="time-label">Stunden</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="meeting-minutes">00</div>
+                        <div class="time-label">Minuten</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="meeting-seconds">00</div>
+                        <div class="time-label">Sekunden</div>
+                    </div>
+                </div>
+                <div class="timer-date">seit 12. August 2020</div>
+            </div>
+
+            <!-- Geschenk -->
+            <div class="timer-card countdown">
+                <div class="timer-type">🎁 Countdown</div>
+                <div class="timer-name">Deine Geburtstagsfeier (und maybe noch eine kleinigkeit von mir huhihehaho)</div>
+                <div class="timer-display">
+                    <div>
+                        <div class="time-unit" id="gift-days">00</div>
+                        <div class="time-label">Tage</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="gift-hours">00</div>
+                        <div class="time-label">Stunden</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="gift-minutes">00</div>
+                        <div class="time-label">Minuten</div>
+                    </div>
+                    <div>
+                        <div class="time-unit" id="gift-seconds">00</div>
+                        <div class="time-label">Sekunden</div>
+                    </div>
+                </div>
+                <div class="timer-date">7. März 2026</div>
+            </div>
+        </div>
+
+        <!-- Geheime Nachricht Button -->
+        <button class="birthday-button" onclick="openBirthdayModal()">🎈 Geheime Nachricht</button>
+
+        <!-- SECRET Countdown (klein und unauffällig) -->
+        <div class="secret-timer">
+            <div class="secret-label">🔐 ???</div>
+            <div class="secret-display">
+                <span id="secret-days">00</span>:<span id="secret-hours">00</span>:<span id="secret-minutes">00</span>:<span id="secret-seconds">00</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal für Geheime Nachricht -->
+    <div id="birthdayModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeBirthdayModal()">← Zurück</button>
+            <div id="modalText" class="modal-text">
+                <!-- Text wird hier eingefügt -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
